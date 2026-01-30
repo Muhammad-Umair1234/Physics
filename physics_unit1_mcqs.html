@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Physics Class 9 – Unit 1 MCQs (FBISE)</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #020617;
+  padding: 20px;
+  border-radius: 12px;
+}
+h1 {
+  text-align: center;
+  color: #38bdf8;
+}
+.question {
+  margin: 20px 0;
+}
+.options button {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  background: #1e293b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+.options button:hover {
+  background: #334155;
+}
+.correct {
+  background: #166534 !important;
+}
+.wrong {
+  background: #7f1d1d !important;
+}
+#score {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Physics MCQs – Unit 1 (FBISE)</h1>
+
+<div id="quiz"></div>
+
+<div id="score">Score: 0 / 0</div>
+</div>
+
+<script>
+const questions = [
+{
+q: "Which of the following is NOT a base quantity in SI system?",
+o: ["Electric current", "Temperature", "Force", "Luminous intensity"],
+a: 2
+},
+{
+q: "The least count of a measuring instrument is best described as:",
+o: ["Maximum value it can measure", "Smallest value it can measure accurately", "Difference between two readings", "Total divisions on scale"],
+a: 1
+},
+{
+q: "One nanometer is equal to:",
+o: ["10⁻⁶ m", "10⁻⁹ m", "10⁻¹² m", "10⁻³ m"],
+a: 1
+},
+{
+q: "Which instrument is most suitable for measuring the diameter of a thin wire?",
+o: ["Meter rule", "Vernier calipers", "Measuring tape", "Micrometer screw gauge"],
+a: 3
+},
+{
+q: "The SI unit of solid angle is:",
+o: ["Radian", "Degree", "Steradian", "Second"],
+a: 2
+},
+{
+q: "Zero error occurs in an instrument when:",
+o: ["Scale is damaged", "Instrument is old", "Zero mark does not coincide when closed", "Reading is too small"],
+a: 2
+},
+{
+q: "Which prefix represents 10⁻¹²?",
+o: ["Nano", "Pico", "Micro", "Femto"],
+a: 1
+},
+{
+q: "A physical quantity which has magnitude only is called:",
+o: ["Vector", "Scalar", "Derived quantity", "Fundamental quantity"],
+a: 1
+}
+];
+
+let score = 0;
+let attempted = 0;
+
+const quizDiv = document.getElementById("quiz");
+const scoreDiv = document.getElementById("score");
+
+questions.forEach((item, index) => {
+  const qDiv = document.createElement("div");
+  qDiv.className = "question";
+  qDiv.innerHTML = `<b>Q${index+1}. ${item.q}</b>`;
+  
+  const optDiv = document.createElement("div");
+  optDiv.className = "options";
+
+  item.o.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.innerText = opt;
+    btn.onclick = () => {
+      if (btn.classList.contains("correct") || btn.classList.contains("wrong")) return;
+      attempted++;
+      if (i === item.a) {
+        btn.classList.add("correct");
+        score++;
+      } else {
+        btn.classList.add("wrong");
+      }
+      scoreDiv.innerText = `Score: ${score} / ${attempted}`;
+    };
+    optDiv.appendChild(btn);
+  });
+
+  qDiv.appendChild(optDiv);
+  quizDiv.appendChild(qDiv);
+});
+</script>
+
+</body>
+</html>
